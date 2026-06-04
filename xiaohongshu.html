@@ -38,7 +38,7 @@ body {
 .header .meta span { margin-right: 20px; }
 
 /* ─── 区块 ─── */
-.section { background: var(--card); border-radius: 10px; padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow); }
+.section { background: var(--card); border-radius: 10px; padding: 28px; margin-bottom: 24px; box-shadow: var(--shadow); overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .section h2 {
     font-size: 20px; margin-bottom: 18px; padding-bottom: 10px;
     border-bottom: 2px solid var(--red); display: flex; align-items: center; gap: 8px;
@@ -62,7 +62,8 @@ body {
 .kpi.purple .kpi-val { color: var(--purple); }
 
 /* ─── 表格 ─── */
-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+thead, tbody { width: 100%; display: table; }
 th { background: var(--bg); padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); }
 td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
 tr:hover { background: #FAFAFA; }
@@ -249,14 +250,105 @@ tr:hover { background: #FAFAFA; }
 /* ─── 页脚 ─── */
 .footer { text-align: center; color: var(--gray); font-size: 13px; padding: 30px 0 20px; }
 
-/* ─── 响应式 ─── */
-@media (max-width: 640px) {
-    .container { padding: 12px; }
-    .header { padding: 24px; }
-    .header h1 { font-size: 22px; }
-    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
-    .theme-grid { grid-template-columns: repeat(2, 1fr); }
-    .case-stats { gap: 10px; }
+/* ━━━━━━━━━━ 响应式：平板 (<=768px) ━━━━━━━━━━ */
+@media (max-width: 768px) {
+    .container { padding: 10px; }
+    .header { padding: 20px 16px; border-radius: 8px; }
+    .header h1 { font-size: 20px; }
+    .header .meta { font-size: 12px; }
+    .header .meta span { display: block; margin: 2px 0; }
+    .section { padding: 18px 14px; border-radius: 8px; }
+    .section h2 { font-size: 17px; }
+    .section h3 { font-size: 15px; }
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .kpi { padding: 10px 6px; }
+    .kpi .kpi-val { font-size: 20px; }
+    .kpi .kpi-label { font-size: 11px; }
+    .theme-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    table { font-size: 13px; }
+    th, td { padding: 7px 8px; }
+    .bar-label { width: 60px !important; font-size: 11px; }
+    .bar-val { width: 70px; font-size: 11px; }
+    .chain-box { font-size: 11px; padding: 14px; }
+    .scam-alert { padding: 18px 14px; }
+    .construction-banner { padding: 18px 14px; }
+    .construction-banner h3 { font-size: 16px; }
+    .case-card { padding: 14px; }
+    .case-title { font-size: 14px; }
+    .case-desc { max-height: 100px; font-size: 12px; padding: 10px; }
+    .avoid-guide { padding: 14px; }
+}
+
+/* ━━━━━━━━━━ 响应式：手机 (<=480px) ━━━━━━━━━━ */
+@media (max-width: 480px) {
+    .container { padding: 6px; }
+    .header { padding: 16px 12px; margin-bottom: 16px; }
+    .header h1 { font-size: 18px; line-height: 1.4; }
+    .header .meta { font-size: 11px; }
+    .section { padding: 14px 10px; margin-bottom: 14px; }
+    .section h2 { font-size: 16px; margin-bottom: 12px; padding-bottom: 8px; }
+    .section h3 { font-size: 14px; margin: 14px 0 10px; }
+    .section h4 { font-size: 13px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .kpi { padding: 10px 4px; }
+    .kpi .kpi-val { font-size: 18px; }
+    .kpi .kpi-label { font-size: 10px; }
+    .theme-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .theme-card { padding: 12px 6px; }
+    .theme-circle { width: 44px; height: 44px; font-size: 15px; }
+    .theme-name { font-size: 12px; }
+    .theme-meta { font-size: 10px; }
+    /* 表格横向滚动 */
+    table { font-size: 12px; }
+    th, td { padding: 6px 6px; }
+    /* 柱状图 */
+    .bar-row { font-size: 11px; }
+    .bar-label { width: 50px !important; font-size: 10px; }
+    .bar-track { height: 18px; }
+    .bar-val { width: 60px; font-size: 10px; text-align: right; }
+    /* 头部横幅 */
+    .scam-alert { padding: 14px 10px; border-radius: 8px; }
+    .scam-alert h2 { font-size: 16px; }
+    .scam-alert .kpi .kpi-val { font-size: 18px; }
+    .construction-banner { padding: 14px 10px; border-radius: 8px; }
+    .construction-banner h3 { font-size: 15px; }
+    .construction-banner .banner-stats { gap: 8px; }
+    .construction-banner .banner-stat { padding: 6px 10px; }
+    .construction-banner .banner-stat-val { font-size: 18px; }
+    /* 案例卡片 */
+    .case-card { padding: 12px; margin: 10px 0; border-left-width: 3px; }
+    .case-header { flex-wrap: wrap; gap: 6px; }
+    .case-num { font-size: 10px; padding: 1px 8px; }
+    .case-title { font-size: 13px; width: 100%; }
+    .build-badge { font-size: 10px; padding: 1px 8px; }
+    .case-meta { gap: 8px; font-size: 11px; }
+    .case-stats { gap: 8px; }
+    .stat-num { font-size: 14px; }
+    .stat-label { font-size: 10px; }
+    .case-desc { font-size: 12px; padding: 8px; max-height: 80px; line-height: 1.5; }
+    .tag { font-size: 10px; padding: 1px 8px; }
+    /* 链条代码块 */
+    .chain-box { font-size: 10px; padding: 10px; line-height: 1.6; border-radius: 6px; }
+    /* 标签云 */
+    .tag-cloud { gap: 5px; }
+    .tag-cloud-item { padding: 3px 8px; font-size: 11px !important; }
+    /* 规避指南 */
+    .avoid-guide { padding: 12px; }
+    .avoid-guide h4 { font-size: 14px; }
+    .guide-steps { padding-left: 16px; font-size: 13px; }
+    .red-flag-table { font-size: 11px; }
+    /* 信号清单 */
+    .signal-list li { padding: 8px 10px 8px 40px; font-size: 13px; }
+    .signal-list li::before { width: 20px; height: 20px; line-height: 20px; font-size: 10px; left: 10px; }
+    /* 页脚 */
+    .footer { font-size: 11px; padding: 20px 0 14px; }
+    .findings { padding: 10px 12px; font-size: 13px; }
+    /* 骗局类型卡片 */
+    .scam-type { padding: 12px; margin: 8px 0; }
+    .scam-type h4 { font-size: 13px; }
+    .scam-type.top-scam { padding: 14px; }
+    .scam-type.top-scam h4 { font-size: 14px; }
+    .scam-type ul { padding-left: 16px; font-size: 12px; }
 }
 </style>
 </head>
@@ -352,6 +444,7 @@ tr:hover { background: #FAFAFA; }
 <div class="section">
 <h2>三、互动数据深度分析</h2>
 <h3>Top 10 高互动笔记</h3>
+<div class="table-wrap">
 <table>
 <tr><th>#</th><th>标题</th><th>作者</th><th>点赞</th><th>收藏</th><th>评论</th><th>互动得分</th><th>主题</th></tr>
 <tr>
@@ -456,9 +549,7 @@ tr:hover { background: #FAFAFA; }
         </tr>
 
 </table>
-<div class="findings">
-    <ul>
-        <li><strong>爆款特征</strong>：最高互动笔记「3️⃣低成本出国打工项目 你需要知道的信息差」得分 18663，远超平均值。</li>
+</div>：最高互动笔记「3️⃣低成本出国打工项目 你需要知道的信息差」得分 18663，远超平均值。</li>
         <li><strong>长尾分布明显</strong>：少数头部笔记贡献了大部分互动量。</li>
         <li><strong>高互动共性</strong>：包含「干货」「攻略」「被骗」等关键词的实用性和警示性内容更容易引发传播。</li>
     </ul>

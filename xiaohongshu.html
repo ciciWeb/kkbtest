@@ -247,6 +247,99 @@ tr:hover { background: #FAFAFA; }
 }
 .red-flag-table tr:hover { background: #FFF5F5; }
 
+/* ─── 红色警示名单 ─── */
+.named-list { margin: 12px 0; }
+.named-card {
+    background: white; border-radius: 8px; margin: 10px 0; overflow: hidden;
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.named-header {
+    padding: 12px 16px; font-size: 15px; display: flex; align-items: center; gap: 8px;
+}
+.named-card.person .named-header { background: linear-gradient(90deg, #FFEAEA, #FFF); border-left: 4px solid #D63031; }
+.named-card.org .named-header { background: linear-gradient(90deg, #FFF3E0, #FFF); border-left: 4px solid #E17055; }
+.named-icon { font-size: 18px; }
+.named-body { padding: 4px 16px 14px; }
+.named-body ul { padding-left: 18px; margin: 4px 0; }
+.named-body li { margin: 4px 0; font-size: 13px; line-height: 1.7; }
+.named-source {
+    font-size: 11px; color: var(--gray); margin: 0 0 6px;
+    border-bottom: 1px dashed var(--border); padding-bottom: 4px;
+}
+.named-evidence {
+    background: #FFF5F5; padding: 8px 12px; border-radius: 4px;
+    font-size: 12px; color: #666; line-height: 1.6; margin: 8px 0 0;
+    border-left: 3px solid #FFCCCC; font-style: italic;
+}
+.named-disclaimer {
+    margin: 16px 0 0; padding: 12px; background: #F8F8F8; border-radius: 6px;
+    font-size: 12px; color: var(--gray); line-height: 1.6;
+}
+
+/* ─── 案例折叠 ─── */
+.case-details {
+    background: var(--bg); border-radius: 8px; padding: 0; margin: 12px 0;
+    border: 1px solid var(--border);
+}
+.case-summary {
+    padding: 14px 18px; cursor: pointer; font-size: 14px; font-weight: 600;
+    color: var(--red); user-select: none; list-style: none;
+    display: flex; align-items: center; gap: 8px;
+}
+.case-summary::-webkit-details-marker { display: none; }
+.case-summary::before {
+    content: "▶"; font-size: 11px; transition: transform 0.2s;
+}
+.case-details[open] .case-summary::before {
+    transform: rotate(90deg);
+}
+.case-details[open] .case-summary {
+    border-bottom: 1px solid var(--border); margin-bottom: 8px;
+}
+
+/* ─── 中介评估卡片 ─── */
+.agency-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; margin: 16px 0; box-shadow: var(--shadow);
+}
+.agency-card.reliable { border-left: 5px solid var(--green); }
+.agency-card.caution { border-left: 5px solid var(--red); }
+.agency-card.neutral { border-left: 5px solid var(--orange); }
+.agency-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; flex-wrap: wrap; gap: 8px;
+}
+.agency-name { font-size: 17px; font-weight: 700; }
+.agency-badge {
+    padding: 3px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;
+    margin-left: 8px;
+}
+.agency-badge.green { background: #E8F8F5; color: #00B894; }
+.agency-badge.orange { background: #FFF3E0; color: #E17055; }
+.agency-badge.red { background: #FFEAEA; color: #D63031; }
+.agency-score { font-size: 28px; font-weight: 700; }
+.agency-score.green { color: var(--green); }
+.agency-score.orange { color: var(--orange); }
+.agency-score.red { color: var(--red); }
+.agency-pro, .agency-con {
+    display: inline-block; padding: 2px 10px; border-radius: 4px;
+    font-size: 12px; margin: 3px 2px;
+}
+.agency-pro { background: #E8F8F5; color: #00B894; }
+.agency-con { background: #FFEAEA; color: #D63031; }
+.info-author-tag {
+    background: #E8F4FD; color: var(--blue); padding: 2px 10px; border-radius: 12px;
+    font-size: 12px; display: inline-block; margin: 2px;
+}
+.score-bar-track {
+    flex: 1; height: 8px; background: #F0F0F0; border-radius: 4px;
+    overflow: hidden; margin: 0 12px;
+}
+.score-bar-fill { height: 100%; border-radius: 4px; transition: width .6s; }
+.score-bar-fill.green { background: linear-gradient(90deg, #00B894, #55EFC4); }
+.score-bar-fill.orange { background: linear-gradient(90deg, #E17055, #FDCB6E); }
+.score-bar-fill.red { background: linear-gradient(90deg, #D63031, #FF7675); }
+
 /* ─── 页脚 ─── */
 .footer { text-align: center; color: var(--gray); font-size: 13px; padding: 30px 0 20px; }
 
@@ -792,15 +885,124 @@ tr:hover { background: #FAFAFA; }
 </ul>
 </div>
 
-<h3>8.5 已被点名的涉事方</h3>
-<div class="findings" style="border-left:4px solid var(--red); background:#FFF5F0">
+<h3>8.5 已被点名的涉事方 / 人员 / 机构（红色警示）</h3>
+
+<div class="named-list">
+
+<div class="named-card person">
+<div class="named-header"><span class="named-icon">&#x26D4;</span> <strong>王x东（化名 / 真名隐去）</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：爱尔兰白桃汽水PureBai</p>
 <ul>
-    <li><strong>王x东</strong>（化名）：被「爱尔兰白桃汽水PureBai」点名，涉及爱尔兰工签诈骗事件，已被当事人提起诉讼，最终被判赔偿当事人不当得利</li>
-    <li><strong>肉厂雇主群体</strong>：多篇笔记揭露爱尔兰多家肉厂与国内黑中介勾结，收取高额费用后提供虚假岗位，故意找茬施压迫使工人离开</li>
-    <li><strong>没有工程的建筑公司</strong>：「爱尔兰唠叨局」爆料，半死不活的建筑公司靠工签业务赚得盆满钵满</li>
-    <li><strong>国内IP的「华人」账号</strong>：多个中介账号IP在国内，伪装成「爱尔兰华人」「工签成功者」发布经验帖引流</li>
+    <li>涉及<strong>「爱尔兰王x东工签事件」</strong>，多篇笔记点名</li>
+    <li>以工签名义收取高额费用，当事人已<strong>提起诉讼</strong></li>
+    <li>最终结果：判赔当事人不当得利（引自爆料人后续笔记）</li>
 </ul>
-<p style="margin-top:10px;color:var(--gray);font-size:13px">注：以上信息来源于小红书用户公开笔记，仅供参考。具体案件请以官方通报为准。</p>
+<p class="named-evidence">原文：「爱尔兰王x东工签事件，后面进去结局参照往期。赔钱给当事人不当得利。」</p>
+</div>
+</div>
+
+<div class="named-card person">
+<div class="named-header"><span class="named-icon">&#x26D4;</span> <strong>被判 6 年的中介（具体姓名未公开）</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：kildare金娃</p>
+<ul>
+    <li>用<strong>爱尔兰农业噱头</strong>，吹嘘肉联厂交钱即可永久工作</li>
+    <li>雇主配合在厂内找人给工人<strong>找麻烦、施压</strong>，各种虚假宣传保工作</li>
+    <li>涉及<strong>肉厂找国内商业人员站台、合影</strong>，营造可信假象</li>
+    <li>最终结果：<strong>中介被判 6 年</strong>，全是虚假信息</li>
+</ul>
+<p class="named-evidence">原文：「中介判了6年，全是虚假信息啊？！各种手段都用上，包括肉厂找国内商业人员给他站台，合影？」</p>
+</div>
+</div>
+
+<div class="named-card org">
+<div class="named-header"><span class="named-icon">&#x1F3E2;</span> <strong>爱尔兰多家肉厂 / 肉联厂雇主</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：kildare金娃、爱尔兰白桃汽水PureBai</p>
+<ul>
+    <li>与国内黑中介<strong>勾结分成</strong>，收取工人高额中介费后提供虚假岗位</li>
+    <li>工人到岗后<strong>故意找茬、施压、克扣工资、拖欠工资</strong>，迫使工人离开</li>
+    <li>爆料称肉厂已有<strong>两位同事去世</strong>（引自kildare金娃）</li>
+    <li>受害当事人已<strong>提起诉讼</strong>，案件正在处理中</li>
+</ul>
+</div>
+</div>
+
+<div class="named-card org">
+<div class="named-header"><span class="named-icon">&#x1F3D7;</span> <strong>没有工程的建筑公司</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：爱尔兰唠叨局</p>
+<ul>
+    <li>半死不活、没有工程的建筑公司，<strong>靠工签业务赚得盆满钵满</strong></li>
+    <li>建筑工人到达后被<strong>落地解雇</strong>，签证随之失效</li>
+    <li>受害者为找其他方式留下来不敢发声，<strong>怕雇主反咬一口影响延期申请</strong></li>
+</ul>
+<p class="named-evidence">原文：「半死不活的餐饮公司和没有工程的建筑公司都靠工签赚的盆满钵满的。」</p>
+</div>
+</div>
+
+<div class="named-card person">
+<div class="named-header"><span class="named-icon">&#x1F464;</span> <strong>「专业马扁人的老华人 p 子」</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：爱尔兰白桃汽水PureBai</p>
+<ul>
+    <li>长期在爱尔兰专门以<strong>工签诈骗为业的老华人骗子</strong></li>
+    <li>使用谐音「马扁」= 骗、「p 子」= 骗子，规避平台审核</li>
+    <li>从 2018 年至今<strong>持续运营</strong>，专门针对同胞</li>
+</ul>
+<p class="named-evidence">原文：「专业马扁人的老华人p子，也提醒你们，如果你想再在爱尔兰继续行P，你还会看见咱们！」</p>
+</div>
+</div>
+
+<div class="named-card org">
+<div class="named-header"><span class="named-icon">&#x1F4CB;</span> <strong>盗用合同模板的签证诈骗中介</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：爱尔兰华人志</p>
+<ul>
+    <li>针对<strong>护士群体</strong>的大规模签证骗局，数百人被骗</li>
+    <li>盗用<strong>真实雇主的合同模板，篡改姓名</strong>，将伪造文件提交给爱尔兰司法部和企业部</li>
+    <li>以此骗取<strong>合法工作许可</strong>，手段隐蔽、危害极大</li>
+</ul>
+</div>
+</div>
+
+<div class="named-card org">
+<div class="named-header"><span class="named-icon">&#x1F4B0;</span> <strong>关键技能工签诈骗团伙</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：爱尔兰小唠叨</p>
+<ul>
+    <li>以<strong>关键技能就业许可（CSEP）</strong>为噱头进行诈骗</li>
+    <li>最少被骗<strong>几万欧元</strong>，多的达<strong>20 万欧元</strong></li>
+    <li>因被骗发生在国外，国内报案很难受理</li>
+</ul>
+</div>
+</div>
+
+<div class="named-card org">
+<div class="named-header"><span class="named-icon">&#x1F3E2;</span> <strong>「空壳」餐饮公司</strong></div>
+<div class="named-body">
+<p class="named-source">爆料人：爱尔兰唠叨局</p>
+<ul>
+    <li>经营不善的餐饮公司，<strong>挂靠工签业务牟利</strong></li>
+    <li>业绩好的企业不会冒着违法风险给你挂靠，缺你那几个钱</li>
+</ul>
+</div>
+</div>
+
+<div class="named-card org">
+<div class="named-header"><span class="named-icon">&#x1F310;</span> <strong>国内 IP 的虚假「爱尔兰华人」账号群</strong></div>
+<div class="named-body">
+<p class="named-source">多篇笔记共同揭露</p>
+<ul>
+    <li>IP 在国内的账号，伪装成<strong>「爱尔兰华人」「工签成功者」</strong></li>
+    <li>大量发布「现身说法」「高薪轻松」内容，<strong>引流到私信收取费用</strong></li>
+    <li>部分账号收取费用后<strong>微信拉黑、电话不接</strong>，直接消失</li>
+</ul>
+</div>
+</div>
+
+<p class="named-disclaimer">注：以上信息全部来源于小红书用户公开笔记的原始描述，仅供参考和警示。具体案件细节请以爱尔兰官方司法通报为准。部分姓名使用化名或部分隐去是爆料人为规避平台审核。</p>
 </div>
 
 <h3>8.6 爆料作者 Top 8（感谢他们揭露真相）</h3>
@@ -913,6 +1115,8 @@ tr:hover { background: #FAFAFA; }
            → 部分受害者已提起诉讼</div>
 
 <h3>8.10 骗局相关笔记逐条分析</h3>
+<details class="case-details">
+<summary class="case-summary">点击展开查看全部 96 条骗局相关笔记详情</summary>
 <div class="case-card">
             <div class="case-header">
                 <span class="case-num">案例 1</span>
@@ -3049,6 +3253,7 @@ tr:hover { background: #FAFAFA; }
             <a class='case-link' href='https://www.xiaohongshu.com/explore/6a1e4c520000000035025a6c' target='_blank'>查看原文 &rarr;</a>
         </div>
 
+</details>
 
 <h3>8.11 高危信号识别清单</h3>
 <ol class="signal-list">
@@ -3153,6 +3358,968 @@ tr:hover { background: #FAFAFA; }
 <tr><td><strong>竞争强度</strong></td><td>竞争低</td><td>无头部 KOL，166 位作者中多数仅发 1 篇</td></tr>
 <tr><td><strong>视频机会</strong></td><td>蓝海</td><td>视频仅占 26.7%，存在显著内容缺口</td></tr>
 </table>
+</div>
+
+<!-- ═══ 十一、中介/机构靠谱度评估 ═══ -->
+<div class="section">
+<h2>十一、中介/机构靠谱度评估</h2>
+<p>以下基于昵称关键词和内容特征自动识别中介/咨询机构账号，并从<strong>身份透明度、内容质量、风险提示、诚信度、互动质量</strong>五个维度进行评分（满分 100）。评分仅供参考，请结合多方信息自行判断。</p>
+<div class="kpi-grid" style="margin:16px 0">
+    <div class="kpi blue"><div class="kpi-val">27</div><div class="kpi-label">识别到的中介/机构账号</div></div>
+    <div class="kpi green"><div class="kpi-val">15</div><div class="kpi-label">较靠谱</div></div>
+    <div class="kpi orange"><div class="kpi-val">11</div><div class="kpi-label">一般/待验证</div></div>
+    <div class="kpi red"><div class="kpi-val">1</div><div class="kpi-label">需谨慎</div></div>
+</div>
+
+<h3>11.1 机构靠谱度排名（由高到低）</h3>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">鑫海Mya移民咨询</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">92</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:92%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">28</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">13</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">20</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">92.3</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（3 项关键词）</span><span class="agency-pro">✓ 主动提示风险/门槛（4 项）</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>😱今天又劝退了一批想去爱尔兰的人</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">寰宇出国咨询服务</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">90</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:90%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">6</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">4</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">4</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">29.6</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（3 项关键词）</span><span class="agency-pro">✓ 提及部分风险提示</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 公开提及费用/成本</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>花10万欧拿爱尔兰身份，中产真的不用硬扛</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">爱岛移民中介人才互动</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">89</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:89%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">40</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">12</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">10</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">7</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">13.5</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 提及部分风险提示</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 引用官方信息源</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>北京的某公司用假爱尔兰项目诈骗几千万</li><li>爱尔兰又出现冤大头受害者🇮🇪</li><li>别在爱尔兰骗了🇮🇪</li><li>上门核查情况后2个工作日下签</li><li>永远记得贪小便宜吃大亏的道理。</li><li>关键技能盗用别人公司申请出事多人被遣返</li><li>爱尔兰餐车创业移民🇮🇪</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">翰森爱尔兰移民咨询-Charles</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">86</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:86%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">3</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">7.2</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（5 项关键词）</span><span class="agency-pro">✓ 提及部分风险提示</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>爱尔兰移民全路径指南，从Stamp1到国籍</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">EUR鑫海移民</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">84</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:84%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">108</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">107</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">158</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">352.2</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（6 项关键词）</span><span class="agency-pro">✓ 主动提示风险/门槛（2 项）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🔥爆火，在爱尔兰生活21个月，就能拿身份</li><li>IT/建筑人群，这两条移民路可以看看</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">大元海外咨询</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">81</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:81%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">1683</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">1003</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">53</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">20</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">174.8</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（9 项关键词）</span><span class="agency-pro">✓ 主动提示风险/门槛（3 项）</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 公开提及费用/成本</span> <span class="agency-con">✗ 夸大宣传用语（一步到位）</span><span class="agency-con">✗ 声称&quot;无需英语/学历&quot;（与爱尔兰政策不符）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>爱尔兰🇮🇪就业，非欧盟居民指南</li><li>办理爱尔兰🇮🇪工签，认准这几类雇主</li><li>你敢信吗，爱尔兰全球只有8️⃣个签证办公室</li><li>爱尔兰🇮🇪IIP的平替，被盯上了</li><li>爱尔兰🇮🇪关键技能工签，没有移民监⁉️</li><li>爱尔兰 🆚 英国，不一样的跳板</li><li>爱尔兰🇮🇪关键技能工签，被低估的移民捷径</li><li>这个英语国家的移民，不要求英语成绩</li><li>爱尔兰🇮🇪护照被捧上天，到底是凭什么？</li><li>不算不知道，一算吓一跳</li><li>职业发展与移民规划，两不误✅</li><li>英国和爱尔兰，为何割不断⁉️</li><li>年底将至，IIP家庭登陆提醒❗️</li><li>爱尔兰🇮🇪IIP，新项目名额预售</li><li>爱尔兰🇮🇪工签移民，还有吸引力吗？</li><li>爱尔兰🇮🇪用工荒，对新移民意味着什么？</li><li>同样在爱尔兰🇮🇪求职，为什么体感差异巨大</li><li>🇮🇪CSO: 劳动力市场、收入与移民展望</li><li>爱尔兰🇮🇪关键技能，有3类申请人劝退❌</li><li>🇮🇪IIP万一被拒，有以下2️⃣个方案</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">盈多利移民服务中介</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">81</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:81%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">18</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">25</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">5</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">59.1</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 提及部分风险提示</span><span class="agency-pro">✓ 公开提及费用/成本</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🇮🇪爱尔兰捐赠移民项目暴雷该怎么办？</li><li>爱尔兰雇主担保靠谱吗？</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">移路通-移民中介服务</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">81</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:81%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">34</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">34</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">9</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">119.8</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（6 项关键词）</span><span class="agency-pro">✓ 提及部分风险提示</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> <span class="agency-con">✗ 声称&quot;无需英语/学历&quot;（与爱尔兰政策不符）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🌍 如何用爱尔兰当永居🇬🇧跳板？</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">Fun弘山趣移民咨询</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">80</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:80%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">41</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">30</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">22</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">93.8</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 提及部分风险提示</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>爱尔兰宣布，2026年面对华人大量发放pr</li><li>爱尔兰投资移民骗局重重？教你一招辨别真假
+	
+随着欧洲传统国家的移民政策不断收紧，一些欧洲小发达国家越来越受投资移民者的</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">小红薯689AB5B8</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">79</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:79%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">20</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">19</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">58.9</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 提供具体政策细节（8 项关键词）</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 引用官方信息源</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>普通人也能get的爱尔兰搬砖指南！亲测干货</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">星汉澳桓因私出入境服务</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">79</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:79%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">161</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">177</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">46</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">621.7</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 提供具体政策细节（5 项关键词）</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 公开提及费用/成本</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>澳洲雇主担保移民的所有方式及流程</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">寰宇移民（智翰）咨询服务</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">76</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:76%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">9</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">3</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">20.1</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（3 项关键词）</span><span class="agency-pro">✓ 公开提及费用/成本</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> <span class="agency-con">✗ 夸大宣传用语（一步到位）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🔥为什么说爱尔兰是“性价比之王”？</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">移民的卤卤</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">72</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:72%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">566</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">486</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">599</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">2844.6</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（3 项关键词）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🇳🇿总结留在新西兰的难度 (过来人)</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">寰宇移民（禾临）咨询</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">71</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:71%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">37</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">31</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">10</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">4</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">34.6</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提供具体政策细节（5 项关键词）</span><span class="agency-pro">✓ 主动提示风险/门槛（2 项）</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 公开提及费用/成本</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> <span class="agency-con">✗ 使用拼音规避平台审核（4 处）</span><span class="agency-con">✗ 声称&quot;无需英语/学历&quot;（与爱尔兰政策不符）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>爱尔兰工签凭什么成移民捷径？全解析来啦！</li><li>爱尔兰工签移民暴雷？拆解骗局+避坑方法​</li><li>爱尔兰雇主担保是骗局？10 个问题拆穿套路</li><li>爱尔兰🇮🇪普通工签 vs 关键技能工签</li></ul>
+            </details>
+        </div>
+<div class="agency-card reliable">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">怀恩移民咨询</span>
+                    <span class="agency-badge green">较靠谱</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score green">70</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill green" style="width:70%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">5</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">6</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">9</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">40.4</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 公开提及费用/成本</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🔥德国工签，海外仓真实工作机会~</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">专注移民</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">69</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:69%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">8</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">15.0</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 公开提及费用/成本</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>如何在爱尔兰拿身份？</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">andy的澳幸移民中介</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">66</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:66%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">408</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">401</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">761</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">2694.7</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提及部分政策信息</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>澳洲雇主担保🇦🇺186可以这么💰？</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">美禾唠出国服务</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">65</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:65%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">112</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">100</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">14</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">335.6</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 公开提及费用/成本</span><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>干货！欧洲各国工签转永居申请条件</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">移民规划邢老师</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">64</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:64%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">5</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">4</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">18.2</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 提及部分风险提示</span> <span class="agency-con">✗ 使用拼音规避平台审核（1 处）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>英美奥加门槛暴涨、排期拉长，现在精明家庭都转战爱尔兰！英语国家+欧盟身份双buff拉满
+	
+✅21个月拿下Stamp4
+</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">铎信希腊生活</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">64</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:64%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">20</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">17</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">14</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">84.3</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 提供具体申请流程/步骤</span><span class="agency-pro">✓ 公开提及费用/成本</span> <span class="agency-con">✗ 包含直接引流/转化话术</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🇮🇪 爱尔兰2年工签｜4个月获批｜仅需4.5万欧</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">Yilia说移民</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">60</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:60%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">3</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">8.0</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>血汗钱花光换来爱尔兰的一份黑工？！</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">环球移民干货君</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">60</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:60%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">3</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">3.0</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>欧洲远程工签，这3类人千万别碰！</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">Z姐-尊诺移民中介</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">56</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:56%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">3</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">16</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">36.2</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span><span class="agency-pro">✓ 提及部分政策信息</span><span class="agency-pro">✓ 提及部分风险提示</span><span class="agency-pro">✓ 公开提及费用/成本</span> <span class="agency-con">✗ 夸大宣传用语（轻松, 一步到位）</span><span class="agency-con">✗ 声称&quot;无需英语/学历&quot;（与爱尔兰政策不符）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>爱尔兰工签，2年转长居！</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">中环凯盛之路</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">55</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:55%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">31</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">36</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">12</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">123.4</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 评论/点赞比合理（反映真实互动）</span> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>下半年，一定要拿到身份的6大国家</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">寰宇移民禾临咨询服务</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">55</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:55%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">8</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">0</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">9.2</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"><span class="agency-pro">✓ 身份标识清晰（昵称含行业关键词）</span> <span class="agency-con">✗ 夸大宣传用语（轻松）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>爱尔兰技能工签VS普通工签｜差别大到离谱✨</li></ul>
+            </details>
+        </div>
+<div class="agency-card neutral">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">苏以橙🍊</span>
+                    <span class="agency-badge orange">一般/待验证</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score orange">50</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill orange" style="width:50%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">33</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">29</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">19</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">1</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">154.1</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"> </div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>🇮🇪律所日常 - 本周获批的1号无雇主工签</li></ul>
+            </details>
+        </div>
+<div class="agency-card caution">
+            <div class="agency-header">
+                <div>
+                    <span class="agency-name">Panda计划</span>
+                    <span class="agency-badge red">需谨慎</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                    <span class="agency-score red">45</span>
+                    <span style="font-size:12px;color:var(--gray)">/ 100</span>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;margin:6px 0">
+                <span style="font-size:12px;color:var(--gray);width:32px">0</span>
+                <div class="score-bar-track"><div class="score-bar-fill red" style="width:45%"></div></div>
+                <span style="font-size:12px;color:var(--gray);width:32px">100</span>
+            </div>
+            <div class="case-stats">
+                <div class="stat"><span class="stat-num">326</span><span class="stat-label">总点赞</span></div>
+                <div class="stat"><span class="stat-num">346</span><span class="stat-label">总收藏</span></div>
+                <div class="stat"><span class="stat-num">11</span><span class="stat-label">总评论</span></div>
+                <div class="stat"><span class="stat-num">2</span><span class="stat-label">发文数</span></div>
+                <div class="stat"><span class="stat-num">461.1</span><span class="stat-label">平均互动</span></div>
+            </div>
+            <div style="margin:10px 0;line-height:2"> <span class="agency-con">✗ 夸大宣传用语（任选）</span></div>
+            <details class="case-details">
+                <summary class="case-summary" style="color:var(--gray);font-size:13px">发布的笔记</summary>
+                <ul style="padding-left:18px;font-size:13px"><li>2年拿永居的爱尔兰工签，90种职业方向任选！</li><li>现在还适合定居欧美吗？常见利弊分析&amp;对比</li></ul>
+            </details>
+        </div>
+
+
+<h3>11.2 评分方法说明</h3>
+<div class="findings">
+<ul>
+    <li><strong>加分项</strong>：身份标识清晰（+10）、提供具体政策细节（+6~12）、主动提示风险/门槛（+6~12）、提供申请流程步骤（+8）、公开提及费用（+4）、引用官方信息源（+4）、评论/点赞比合理（+5）</li>
+    <li><strong>扣分项</strong>：使用拼音规避平台审核（-8/处，上限-20）、夸大宣传用语（-5/处，上限-15）、声称无需英语/学历（-10）、包含直接引流话术（-4）</li>
+    <li><strong>评级标准</strong>：≥70 为「较靠谱」，≥50 为「一般/待验证」，&lt;50 为「需谨慎」</li>
+    <li><strong>基础分</strong>：50 分（即不加分不扣分的默认状态）</li>
+</ul>
+</div>
+
+<h3>11.3 优质非中介信息源（推荐关注）</h3>
+<p>以下账号 <strong>不是中介/机构</strong>，但发布了关于爱尔兰工签的有价值信息，可作为可信的参考资料：</p>
+<table>
+<tr><th>#</th><th>作者</th><th>发文数</th><th>总点赞</th><th>总评论</th><th>平均互动</th><th>内容类型</th></tr>
+<tr>
+            <td class="center">1</td>
+            <td><strong>英勇又疯狂的大鱼</strong></td>
+            <td class="center">1</td>
+            <td class="center num">6575</td>
+            <td class="center num">29</td>
+            <td class="center num">18662.7</td>
+            <td><span class="info-author-tag">干货科普</span></td>
+        </tr>
+<tr>
+            <td class="center">2</td>
+            <td><strong>强尼在爱尔兰</strong></td>
+            <td class="center">2</td>
+            <td class="center num">1330</td>
+            <td class="center num">83</td>
+            <td class="center num">3916.3</td>
+            <td><span class="info-author-tag">干货科普</span></td>
+        </tr>
+<tr>
+            <td class="center">3</td>
+            <td><strong>出国那些事儿～</strong></td>
+            <td class="center">1</td>
+            <td class="center num">591</td>
+            <td class="center num">322</td>
+            <td class="center num">2748.5</td>
+            <td><span class="info-author-tag">骗局揭露</span></td>
+        </tr>
+<tr>
+            <td class="center">4</td>
+            <td><strong>润学研究所</strong></td>
+            <td class="center">1</td>
+            <td class="center num">809</td>
+            <td class="center num">171</td>
+            <td class="center num">2536.4</td>
+            <td><span class="info-author-tag">经验分享</span></td>
+        </tr>
+<tr>
+            <td class="center">5</td>
+            <td><strong>中国制造网总部-Angela</strong></td>
+            <td class="center">1</td>
+            <td class="center num">651</td>
+            <td class="center num">192</td>
+            <td class="center num">2325.6</td>
+            <td><span class="info-author-tag">数据分析</span><span class="info-author-tag">骗局揭露</span><span class="info-author-tag">真实经验</span></td>
+        </tr>
+<tr>
+            <td class="center">6</td>
+            <td><strong>KinKin聊留学</strong></td>
+            <td class="center">1</td>
+            <td class="center num">788</td>
+            <td class="center num">11</td>
+            <td class="center num">2220.6</td>
+            <td><span class="info-author-tag">干货科普</span></td>
+        </tr>
+<tr>
+            <td class="center">7</td>
+            <td><strong>星辰有信⭐</strong></td>
+            <td class="center">1</td>
+            <td class="center num">475</td>
+            <td class="center num">463</td>
+            <td class="center num">2054.1</td>
+            <td><span class="info-author-tag">经验分享</span></td>
+        </tr>
+<tr>
+            <td class="center">8</td>
+            <td><strong>乌龙椰椰冰</strong></td>
+            <td class="center">1</td>
+            <td class="center num">900</td>
+            <td class="center num">67</td>
+            <td class="center num">1784.0</td>
+            <td><span class="info-author-tag">经验分享</span></td>
+        </tr>
+<tr>
+            <td class="center">9</td>
+            <td><strong>躺平第一名</strong></td>
+            <td class="center">2</td>
+            <td class="center num">1041</td>
+            <td class="center num">216</td>
+            <td class="center num">1766.2</td>
+            <td><span class="info-author-tag">干货科普</span></td>
+        </tr>
+<tr>
+            <td class="center">10</td>
+            <td><strong>Pop shit</strong></td>
+            <td class="center">1</td>
+            <td class="center num">197</td>
+            <td class="center num">290</td>
+            <td class="center num">1638.6</td>
+            <td><span class="info-author-tag">经验分享</span></td>
+        </tr>
+<tr>
+            <td class="center">11</td>
+            <td><strong>Bensen</strong></td>
+            <td class="center">1</td>
+            <td class="center num">346</td>
+            <td class="center num">173</td>
+            <td class="center num">1210.4</td>
+            <td><span class="info-author-tag">干货科普</span><span class="info-author-tag">真实经验</span></td>
+        </tr>
+<tr>
+            <td class="center">12</td>
+            <td><strong>Bestow</strong></td>
+            <td class="center">1</td>
+            <td class="center num">101</td>
+            <td class="center num">360</td>
+            <td class="center num">1028.0</td>
+            <td><span class="info-author-tag">经验分享</span></td>
+        </tr>
+<tr>
+            <td class="center">13</td>
+            <td><strong>杨国福麻辣烫欧洲</strong></td>
+            <td class="center">1</td>
+            <td class="center num">160</td>
+            <td class="center num">81</td>
+            <td class="center num">753.1</td>
+            <td><span class="info-author-tag">经验分享</span></td>
+        </tr>
+<tr>
+            <td class="center">14</td>
+            <td><strong>biubiubiu</strong></td>
+            <td class="center">1</td>
+            <td class="center num">196</td>
+            <td class="center num">85</td>
+            <td class="center num">643.5</td>
+            <td><span class="info-author-tag">经验分享</span></td>
+        </tr>
+<tr>
+            <td class="center">15</td>
+            <td><strong>今天讨到薪水了吗🤬</strong></td>
+            <td class="center">1</td>
+            <td class="center num">197</td>
+            <td class="center num">72</td>
+            <td class="center num">530.9</td>
+            <td><span class="info-author-tag">骗局揭露</span></td>
+        </tr>
+
+</table>
+
+<div class="findings" style="border-left:4px solid var(--orange);margin-top:16px">
+<ul>
+    <li><strong>⚠️ 免责声明</strong>：以上评分完全基于笔记公开内容的文本分析，仅供参考。中介服务质量请以实际体验和多方评价为准。建议在选择中介前：(1) 查验其营业执照和移民资质；(2) 搜索其名称查看用户评价；(3) 要求签署正式合同并保留所有证据。</li>
+    <li><strong>选择中介的关键原则</strong>：收费透明、不夸大承诺、愿意书面承诺退款条件、能提供真实雇主信息和合同、不催促付款。</li>
+</ul>
+</div>
 </div>
 
 <div class="footer">

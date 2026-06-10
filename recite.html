@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思小作文：学术写作全能武器库 (Academic Task 1 Mastery)</title>
+<style>
+    :root {
+        --primary-color: #1a6dcc;
+        --secondary-color: #0d47a1;
+        --up-color: #52c41a;
+        --down-color: #f5222d;
+        --stable-color: #1890ff;
+        --prep-color: #722ed1;
+        --time-color: #eb2f96;
+        --subject-color: #fa8c16;
+        --bg-light: #f4f6f9;
+        --card-bg: #ffffff;
+        --text-dark: #333;
+        --text-light: #555;
+    }
+
+    body { 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        line-height: 1.8; 
+        max-width: 1100px; 
+        margin: auto; 
+        padding: 20px; 
+        background-color: var(--bg-light); 
+        color: var(--text-dark);
+    }
+    
+    /* Header */
+    .header { 
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+        color: white; 
+        padding: 40px 30px; 
+        border-radius: 16px; 
+        text-align: center; 
+        margin-bottom: 40px; 
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15); 
+    }
+    .header h1 { margin: 0; font-size: 2.5em; font-weight: 700; }
+    .header .subtitle { margin-top: 15px; opacity: 0.9; font-size: 1.2em; max-width: 800px; margin-left: auto; margin-right: auto;}
+
+    /* Grid Layout */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        body { padding: 12px; }
+        .header { padding: 25px 15px; border-radius: 12px; margin-bottom: 25px; }
+        .header h1 { font-size: 1.5em; }
+        .header .subtitle { font-size: 0.95em; }
+        .grid-container { grid-template-columns: 1fr; gap: 16px; }
+        .card { padding: 16px; }
+        .card h2 { font-size: 1.15em; }
+        .section-title { font-size: 1.3em; margin-top: 25px; margin-bottom: 12px; }
+        .formula { padding: 12px; font-size: 0.85em; }
+        .highlight-box { padding: 15px; font-size: 0.95em; }
+        .tag { font-size: 0.72em; padding: 3px 8px; }
+        code { font-size: 0.82em; }
+    }
+
+    /* Card */
+    .card { 
+        background: var(--card-bg); 
+        padding: 25px; 
+        border-radius: 12px; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+        border-left: 6px solid var(--primary-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: fit-content;
+    }
+    .card:hover { 
+        transform: translateY(-5px); 
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .card h2 { 
+        margin-top: 0; 
+        color: var(--primary-color); 
+        font-size: 1.4em; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+    .card h2 .icon { font-size: 1.2em; }
+
+    /* Tags */
+    .tag { 
+        display: inline-block; 
+        padding: 4px 12px; 
+        border-radius: 20px; 
+        font-size: 0.8em; 
+        font-weight: bold; 
+        margin-right: 8px; 
+        margin-bottom: 8px;
+        color: white; 
+        letter-spacing: 0.5px;
+    }
+    .tag-up { background-color: var(--up-color); }
+    .tag-down { background-color: var(--down-color); }
+    .tag-stable { background-color: var(--stable-color); }
+    .tag-prep { background-color: var(--prep-color); }
+    .tag-time { background-color: var(--time-color); }
+    .tag-subject { background-color: var(--subject-color); }
+    .tag-intro { background-color: #13c2c2; }
+
+    /* Content Styling */
+    ul { padding-left: 20px; list-style-type: none; }
+    li { margin-bottom: 10px; position: relative; padding-left: 15px;}
+    li::before {
+        content: "▪";
+        color: var(--primary-color);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+    strong { color: #d4380d; }
+    code { 
+        background-color: #f0f2f5; 
+        padding: 3px 8px; 
+        border-radius: 6px; 
+        font-family: 'Courier New', monospace; 
+        color: #c7254e; 
+        font-weight: bold;
+        border: 1px solid #e8e8e8;
+    }
+    .formula { 
+        background-color: #e6f7ff; 
+        border: 1px solid #91d5ff; 
+        padding: 18px; 
+        border-radius: 8px; 
+        font-family: 'Courier New', monospace; 
+        font-size: 1em; 
+        margin: 15px 0; 
+        color: #0050b3; 
+        line-height: 1.6;
+    }
+    .highlight-box { 
+        background-color: #fffbe6; 
+        border: 1px dashed #faad14; 
+        padding: 20px; 
+        border-radius: 8px; 
+        margin: 30px 0; 
+        font-size: 1.1em;
+    }
+    .section-title {
+        grid-column: 1 / -1;
+        font-size: 1.8em;
+        color: var(--secondary-color);
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid var(--primary-color);
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        color: #888;
+        font-size: 0.9em;
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🚀 雅思小作文：学术写作全能武器库</h1>
+    <p class="subtitle">涵盖Task 1所有图表类型、时态逻辑与高阶连接词。从基础改写到达人级逻辑，一站式攻克学术写作。</p>
+</div>
+
+<!-- Section 1: Introduction & Paraphrasing -->
+<div class="section-title">🔄 第一部分：开篇改写与同义替换 (Introduction & Paraphrasing)</div>
+
+<div class="grid-container">
+    <div class="card">
+        <h2><span class="icon">✍️</span>题干改写核心动词</h2>
+        <p>拒绝重复 show，使用更学术的表达：</p>
+        <ul>
+            <li><code>illustrates</code> (阐明/图示)</li>
+            <li><code>describes</code> (描述)</li>
+            <li><code>delineates</code> (描绘/勾勒)</li>
+            <li><code>presents</code> (呈现)</li>
+            <li><code>depicts</code> (刻画)</li>
+            <li><code>compares</code> (比较)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🔄</span>高频名词替换</h2>
+        <p>针对常见图表主题：</p>
+        <ul>
+            <li><strong>数量/货物：</strong> <code>quantities of goods</code> → <code>volume of cargo</code> / <code>amount of goods transported</code></li>
+            <li><strong>运输方式：</strong> <code>modes of transport</code> → <code>means of transport</code> / <code>distinct categories</code></li>
+            <li><strong>人均：</strong> <code>per person</code> → <code>per capita</code></li>
+            <li><strong>排放：</strong> <code>emissions</code> → <code>carbon output</code> / <code>release of carbon dioxide</code></li>
+            <li><strong>运输：</strong> <code>transported</code> → <code>carried</code> / <code>conveyed</code></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🕰️</span>时间表达升级</h2>
+        <p>让时间描述不再单调：</p>
+        <ul>
+            <li><code>between [Year] and [Year]</code> → <code>over a [X]-year period</code></li>
+            <li>→ <code>over four decades</code> (超过四十年)</li>
+            <li>→ <code>from... to...</code></li>
+            <li>→ <code>during the period spanning from... to...</code></li>
+        </ul>
+        <div class="formula">
+            🗣️ "The line graph <strong>illustrates</strong> changes in <strong>carbon output</strong> <strong>over a 20-year period</strong>."
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Time & Tenses -->
+<div class="section-title">⏳ 第二部分：时间轴与时态逻辑 (Time Axis & Tense Logic)</div>
+
+<div class="grid-container">
+    <div class="card">
+        <h2><span class="icon">🎯</span>时态判定法则 (核心考点)</h2>
+        <p><span class="tag tag-time">过去</span> <strong>纯历史数据：</strong> 全程一般过去时 (<code>v-ed</code>)</p>
+        <p><span class="tag tag-prep">混合</span> <strong>一过去一将来：</strong> 过去时 + 预估词组 (严禁用 will)</p>
+        <p><span class="tag tag-time">未来</span> <strong>纯预测数据：</strong> 全程使用预估词组</p>
+        <div class="formula">
+            ✅ The figure <strong>was</strong> 10 in 2000.<br>
+            ✅ It <strong>is expected to reach</strong> 20 by 2030.<br>
+            ❌ It <strong>will</strong> reach 20. (不推荐)
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🔮</span>预测专用词组</h2>
+        <p>用于将来时间点或预测线：</p>
+        <ul>
+            <li><code>be expected to</code> (被预计会)</li>
+            <li><code>be projected to</code> (被预测会)</li>
+            <li><code>be predicted to</code> (被预言会)</li>
+            <li><code>be forecasted to</code> (被预报会)</li>
+            <li><code>be likely to</code> (很可能)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">📅</span>关键时间介词</h2>
+        <ul>
+            <li><code>over a [X]-year period</code> (在...年期间)</li>
+            <li><code>over two decades</code> (在二十年间)</li>
+            <li><code>in the first/initial ten years</code> (在最初十年)</li>
+            <li><code>in the next ten years</code> (在随后的十年)</li>
+            <li><code>by [Year]</code> (截止到...年)</li>
+            <li><code>throughout the period</code> (在整个期间)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 3: Dynamic Trends -->
+<div class="section-title">📈 第三部分：动态趋势描述 (Dynamic Trends)</div>
+
+<div class="grid-container">
+    <div class="card">
+        <h2><span class="icon">📈</span>上升趋势 (Increase)</h2>
+        <p><span class="tag tag-up">普通上升</span> <code>rise</code> / <code>increase</code> / <code>grow</code> / <code>climb</code> (攀爬)</p>
+        <p><span class="tag tag-up">急剧上升</span> <code>surge</code> / <code>soar</code> (猛增) / <code>rocket</code> (火箭般上升) / <code>leap</code> (飞跃)</p>
+        <p><span class="tag tag-up">持续上升</span> <code>experience a continuous rise</code> / <code>see a gradual but consistent increase</code></p>
+        <div class="formula">
+            📈 "Prices <strong>soared</strong> during the first quarter."
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">📉</span>下降趋势 (Decrease)</h2>
+        <p><span class="tag tag-down">普通下降</span> <code>fall</code> / <code>decrease</code> / <code>drop</code> / <code>decline</code> / <code>dip</code> (小幅下跌)</p>
+        <p><span class="tag tag-down">急剧下降</span> <code>plummet</code> (暴跌) / <code>plunge</code> (投入/猛跌) / <code>dive</code> (跳水) / <code>slump</code> (萧条/暴跌)</p>
+        <p><span class="tag tag-down">持续下降</span> <code>follow a downward trajectory</code> / <code>witness a slow but steady decline</code></p>
+        <div class="formula">
+            📉 "The rate <strong>plummeted</strong> to a record low."
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🌊</span>波动与极值 (Fluctuation & Extremes)</h2>
+        <p><span class="tag tag-stable">波动</span> <code>fluctuate</code> / <code>have a volatile trend</code> (不稳定趋势)</p>
+        <p><span class="tag tag-stable">平稳</span> <code>remain stable/steady</code> / <code>level off</code> (变平) / <code>plateau</code> (进入高原期/平稳)</p>
+        <p><span class="tag tag-subject">极值</span> <code>peak at</code> (在...达到峰值) / <code>bottom out</code> (触底) / <code>overtake</code> (超越)</p>
+        <div class="formula">
+            🔄 "The data <strong>fluctuated wildly</strong> before <strong>leveling off</strong>."
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🧮</span>数值变化逻辑 (By vs To)</h2>
+        <p>这是最容易扣分的地方，必须分清：</p>
+        <p><span class="tag tag-prep">BY</span> <strong>差值 (涨了多少/跌了多少)</strong><br>
+        <code>The price rose <strong>by</strong> 10%.</code> (价格上涨了10个百分点)</p>
+        <p><span class="tag tag-prep">TO</span> <strong>终点 (涨到多少/跌到多少)</strong><br>
+        <code>It climbed <strong>to</strong> 50%.</code> (价格攀升至50%)</p>
+        <p><span class="tag tag-prep">FROM... TO...</span> <strong>起止点</strong><br>
+        <code>It fell <strong>from</strong> 80% <strong>to</strong> 60%.</code></p>
+    </div>
+</div>
+
+<!-- Section 4: Static Data & Proportions -->
+<div class="section-title">📍 第四部分：静态数据与占比 (Static Data & Proportions)</div>
+
+<div class="grid-container">
+    <div class="card">
+        <h2><span class="icon">📊</span>占比与份额 (Proportion)</h2>
+        <p>饼图和静态柱图的灵魂动词：</p>
+        <ul>
+            <li><code>account for</code> (占据 - 最常用)</li>
+            <li><code>represent</code> (代表/占据)</li>
+            <li><code>constitute</code> (构成)</li>
+            <li><code>make up</code> (组成)</li>
+            <li><code>occupy</code> (占有)</li>
+            <li><code>comprise</code> (包含/由...组成)</li>
+        </ul>
+        <div class="formula">
+            🥧 "Coal <strong>accounted for</strong> 40%, while gas <strong>represented</strong> 30%."
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">🏆</span>极值描述 (Static Extremes)</h2>
+        <p>描述谁最多、谁最少：</p>
+        <ul>
+            <li><code>the largest/smallest proportion</code></li>
+            <li><code>the highest/lowest share</code></li>
+            <li><code>the most significant sector</code> (最重要的部分)</li>
+            <li><code>ranked first/second</code> (排名第一/第二)</li>
+            <li><code>was dominant</code> (占主导地位的)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">📍</span>地点与对象 (Location & Subjects)</h2>
+        <ul>
+            <li><strong>地点：</strong> <code>in the UK</code> / <code>across Europe</code> / <code>throughout the period</code></li>
+            <li><strong>类别：</strong> <code>categories</code> / <code>sectors</code> / <code>departments</code></li>
+            <li><strong>支出：</strong> <code>expenditure on [X]</code> / <code>spending by [Group]</code></li>
+            <li><strong>特定项：</strong> <code>specific items</code> / <code>particular modes</code></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Section 5: Advanced Logic & Coherence -->
+<div class="section-title">🏆 第五部分：高阶逻辑与连贯性 (Advanced Logic & Coherence)</div>
+
+<div class="grid-container">
+    <div class="card">
+        <h2><span class="icon">🔗</span>对比与转折 (Contrast)</h2>
+        <p>让段落有层次感：</p>
+        <ul>
+            <li><code>while</code> / <code>whereas</code> (然而 - 连接两个分句)</li>
+            <li><code>by stark contrast</code> / <code>in contrast</code> (形成鲜明对比)</li>
+            <li><code>on the other hand</code> (另一方面)</li>
+            <li><code>conversely</code> / <code>instead</code> (相反地)</li>
+            <li><code>similarly</code> / <code>likewise</code> (同样地)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">➕</span>伴随与结果 (Accompaniment)</h2>
+        <p>将短句合并为长难句（高分关键）：</p>
+        <ul>
+            <li><strong>With结构：</strong> <code>with an increase of 5%</code> (伴随着5%的增长)</li>
+            <li><strong>Reaching结构：</strong> <code>reaching nearly 100 units</code> (达到近100单位)</li>
+            <li><strong>Followed by结构：</strong> <code>followed by a modest recovery</code> (随后是小幅回升)</li>
+            <li><strong>Which引导：</strong> <code>..., which was followed by a fall.</code></li>
+            <li><strong>Making结构：</strong> <code>making it the highest figure</code> (使其成为最高值)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><span class="icon">📝</span>流程与地图专用 (Process & Map)</h2>
+        <p>针对非数据类图表：</p>
+        <ul>
+            <li><strong>阶段：</strong> <code>stage</code> / <code>phase</code> / <code>step</code></li>
+            <li><strong>原材料：</strong> <code>raw material</code> / <code>input</code></li>
+            <li><strong>产物：</strong> <code>final product</code> / <code>output</code></li>
+            <li><strong>方位：</strong> <code>is located to the north of...</code> / <code>adjacent to...</code></li>
+            <li><strong>变化：</strong> <code>was transformed into...</code> / <code>was replaced by...</code></li>
+        </ul>
+    </div>
+
+    <div class="card" style="border-left-color: #faad14;">
+        <h2><span class="icon">💡</span>满分句型填空模板</h2>
+        <div class="formula">
+            🥇 <strong>见证式 (主语用Figure/Number):</strong><br>
+            "The figure for [Subject] <strong>witnessed a steady increase</strong>, <strong>reaching nearly</strong> [Value] by [Year]."
+        </div>
+        <div class="formula">
+            🥈 <strong>伴随式 (With结构):</strong><br>
+            "[Subject] saw a gradual rise, <strong>with an increase of</strong> [Value] over the period."
+        </div>
+        <div class="formula">
+            🥉 <strong>对比式 (While结构):</strong><br>
+            "<strong>While</strong> [A] experienced a downward trajectory, [B] followed an upward trend."
+        </div>
+        <div class="formula">
+            🏆 <strong>序列式 (After which):</strong><br>
+            "...it peaked at [Value], <strong>after which it plummeted to</strong> [Value]."
+        </div>
+    </div>
+</div>
+
+<div class="highlight-box">
+    👨‍🏫 <strong>教授的最终指令：</strong> 
+    雅思小作文的本质是<strong>信息筛选</strong>与<strong>逻辑重组</strong>，而非单纯的词汇堆砌。请遵循以下步骤：<br>
+    1. <strong>审题：</strong>确定时态（过去/将来/混合）和核心趋势。<br>
+    2. <strong>分组：</strong>将相似趋势的数据放在一起写，不要按年份流水账。<br>
+    3. <strong>造句：</strong>优先使用本库的 <code>Formula</code> (公式) 和 <code>With/While</code> 结构。<br>
+    4. <strong>检查：</strong>确保 <code>by</code> 和 <code>to</code> 没有用错。<br>
+    每天朗读这些公式，直到它们成为你的肌肉记忆。祝你屠鸭顺利！
+</div>
+
+<div class="footer">
+    Generated by 元宝 | 雅思学术写作备考资料
+</div>
+
+</body>
+</html>
